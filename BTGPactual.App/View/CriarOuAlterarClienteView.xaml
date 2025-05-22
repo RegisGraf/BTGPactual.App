@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:BTGPactual.App.Converters"
+             x:Class="BTGPactual.App.View.CriarOuAlterarClienteView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:IdadeConverter x:Key="idadeConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <VerticalStackLayout Padding="15"
+                         Spacing="10">
+        <Label x:Name="lblTitle"
+               FontSize="Title"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Center"/>
+
+        <Label Text="Name"/>
+
+        <Entry Text="{Binding NovoCliente.Name}"
+               TextChanged="entryTexChanged">
+            <Entry.Keyboard>
+                <Keyboard x:FactoryMethod="Create">
+                    <x:Arguments>
+                        <KeyboardFlags>Suggestions,CapitalizeCharacter</KeyboardFlags>
+                    </x:Arguments>
+                </Keyboard>
+            </Entry.Keyboard>
+        </Entry>
+
+        <Label Text="Last name"/>
+
+        <Entry Text="{Binding NovoCliente.LastName}"
+               TextChanged="entryTexChanged"/>
+
+        <Label Text="Age"/>
+
+        <Entry Text="{Binding NovoCliente.Age, Converter={StaticResource idadeConverter}}"
+               TextChanged="entryTexChanged"
+               Keyboard="Numeric"/>
+
+        <Label Text="Address"/>
+
+        <Entry Text="{Binding NovoCliente.Address}"
+               TextChanged="entryTexChanged"/>
+
+        <Button Text="Salvar"
+                IsEnabled="{Binding TodosCamposPreenchidos}"
+                Clicked="SalvarClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

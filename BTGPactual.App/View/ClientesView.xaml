@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             x:Class="BTGPactual.App.View.ClientesView">
+    
+    
+    <Grid RowDefinitions="Auto,*" Padding="15">
+        <StackLayout Orientation="Horizontal"
+                     Grid.Row="0">
+            <Label Text="Lista de clientes"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   HorizontalOptions="StartAndExpand"/>
+
+            <Button Text="+ cliente"
+                    HorizontalOptions="End"
+                    Clicked="AddClienteClicked"/>
+        </StackLayout>
+        
+
+        <CollectionView ItemsSource="{Binding ListaClientes}"
+                        Grid.Row="1"
+                        SelectionMode="None"
+                        Margin="0, 10">
+            <CollectionView.Header>
+                <Frame BackgroundColor="LightGray"
+                       CornerRadius="0"
+                       Padding="5">
+                    <Grid ColumnDefinitions="*,*,*,*,90" Padding="0">
+                        <Label Text="Nome" Grid.Column="0"/>
+                        <Label Text="Sobrenome" Grid.Column="1"/>
+                        <Label Text="Idade" Grid.Column="2"/>
+                        <Label Text="Endereço" Grid.Column="3"/>
+                        <Label Text="Ações" Grid.Column="4"/>
+                    </Grid>
+                </Frame>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10"
+                           CornerRadius="0"
+                           Margin="0,10">
+                        <Grid ColumnDefinitions="*,*,*,*,90">
+                            <Label Grid.Row="0"
+                                   Grid.Column="0"
+                                   Text="{Binding Name}" FontSize="Medium"/>
+
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="{Binding LastName}" FontSize="Medium"/>
+
+                            <Label Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="{Binding Age}" FontSize="Medium"/>
+
+                            <Label Grid.Row="0"
+                                   Grid.Column="3"
+                                   Text="{Binding Address}" FontSize="Medium"/>
+
+                            <HorizontalStackLayout Grid.Column="4">
+                                <ImageButton Source="edit.png"
+                                             WidthRequest="30"
+                                             HeightRequest="30"
+                                             BindingContext="{Binding .}"
+                                             ToolTipProperties.Text="Alterar"
+                                             Clicked="AlterarClienteClicked"/>
+
+                                <ImageButton Source="delete.png"
+                                             HeightRequest="30"
+                                             WidthRequest="30"
+                                             BindingContext="{Binding .}"
+                                             ToolTipProperties.Text="Excluir"
+                                             Clicked="ExcluirClienteClicked"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <DataTemplate>
+                    <Label Text="Sem dados para exibir"
+                           VerticalOptions="CenterAndExpand"/>
+                </DataTemplate>
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </Grid>
+</ContentPage>
