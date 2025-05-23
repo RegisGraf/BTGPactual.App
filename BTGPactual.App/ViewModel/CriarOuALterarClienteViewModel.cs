@@ -1,4 +1,4 @@
-﻿using BTGPactual.App.LocalDataBase;
+﻿using BTGPactual.App.Interface;
 using BTGPactual.App.Model;
 using BTGPactual.App.ViewModel.Base;
 
@@ -6,7 +6,7 @@ namespace BTGPactual.App.ViewModel
 {
     public class CriarOuALterarClienteViewModel : BaseViewModel
     {
-        LocalDbService _clienteService;
+        ICliente _clienteService;
 
         private Cliente novoCliente;
         public Cliente NovoCliente
@@ -45,7 +45,7 @@ namespace BTGPactual.App.ViewModel
             }
         }
 
-        public CriarOuALterarClienteViewModel(LocalDbService clienteService)
+        public CriarOuALterarClienteViewModel(ICliente clienteService)
         {
             _clienteService = clienteService;
 

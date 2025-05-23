@@ -1,4 +1,5 @@
-﻿using BTGPactual.App.LocalDataBase;
+﻿using BTGPactual.App.Interface;
+using BTGPactual.App.LocalDataBase;
 using BTGPactual.App.View;
 using BTGPactual.App.ViewModel;
 using Microsoft.Extensions.Logging;
@@ -30,7 +31,7 @@ namespace BTGPactual.App
         public static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
         {
             #region Interfaces and Services
-            builder.Services.AddSingleton<LocalDbService>();
+            builder.Services.AddTransient<ICliente, LocalDbService>();
             #endregion
 
             return builder;

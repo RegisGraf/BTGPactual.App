@@ -1,4 +1,4 @@
-﻿using BTGPactual.App.LocalDataBase;
+﻿using BTGPactual.App.Interface;
 using BTGPactual.App.Model;
 using BTGPactual.App.Services;
 using BTGPactual.App.View;
@@ -9,7 +9,7 @@ namespace BTGPactual.App.ViewModel
 {
     public class ClientesViewModel : BaseViewModel
     {
-        private LocalDbService _clientService;
+        private ICliente _clientService;
 
         private ObservableCollection<Cliente> listaClientes;
         public ObservableCollection<Cliente> ListaClientes
@@ -22,7 +22,7 @@ namespace BTGPactual.App.ViewModel
             }
         }
 
-        public ClientesViewModel(LocalDbService clienteService)
+        public ClientesViewModel(ICliente clienteService)
         {
             _clientService = clienteService;
         }
@@ -74,7 +74,7 @@ namespace BTGPactual.App.ViewModel
         {
             try
             {
-                if(cliente is not null)
+                if (cliente is not null)
                     WindowCriarOuAlterarCliente(cliente, "Alterar dados do cliente");
             }
             catch (Exception)

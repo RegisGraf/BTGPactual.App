@@ -1,4 +1,4 @@
-﻿using BTGPactual.App.LocalDataBase;
+﻿using BTGPactual.App.Interface;
 using BTGPactual.App.Model;
 using BTGPactual.App.ViewModel;
 
@@ -6,9 +6,9 @@ namespace UnitTests
 {
     public class UnitTest1
     {
-        private static LocalDbService _serviceLocalDb = new LocalDbService();
-        private static CriarOuALterarClienteViewModel _criarOuAlterarClienteViewModel = new CriarOuALterarClienteViewModel(_serviceLocalDb);
-        private static ClientesViewModel _clientesViewModel = new ClientesViewModel(_serviceLocalDb);
+        private static ICliente _serviceCliente;
+        private static CriarOuALterarClienteViewModel _criarOuAlterarClienteViewModel = new CriarOuALterarClienteViewModel(_serviceCliente);
+        private static ClientesViewModel _clientesViewModel = new ClientesViewModel(_serviceCliente);
 
         [Fact]
         public async Task Testa_Criacao_cliente()

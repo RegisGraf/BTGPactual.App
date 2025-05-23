@@ -1,4 +1,5 @@
-﻿using BTGPactual.App.LocalDataBase;
+﻿using BTGPactual.App.Interface;
+using BTGPactual.App.LocalDataBase;
 using BTGPactual.App.View;
 using BTGPactual.App.ViewModel;
 #if WINDOWS
@@ -10,8 +11,10 @@ namespace BTGPactual.App
 {
     public partial class App : Application
     {
-        LocalDbService _localDbService;
-        public App(LocalDbService localDbService)
+        //LocalDbService _localDbService;
+        ICliente _localDbService;
+        //public App(LocalDbService localDbService)
+        public App(ICliente localDbService)
         {
             InitializeComponent();
             _localDbService = localDbService;
